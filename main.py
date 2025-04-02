@@ -1,6 +1,7 @@
 from operacoesbd import *
+from metodos import *
 
-#Variável de opção
+conn =  criarConexao("localhost","root","12345", "app_ouvidoria")
 opcao = 0
 
 while opcao != 7:
@@ -13,10 +14,21 @@ while opcao != 7:
         print("Listar manifestações")
 
     elif opcao == 2:
-        print("Listar manifestações por tipo")
+        
+        categoria = escolherCategoria()
+        
+        if len(categoria) > 0:
+            listarManifestacoesCategoria(conn, categoria)
+
 
     elif opcao == 3:
-        print("Criar manifestação")
+        
+        categoria = escolherCategoria()
+        assunto = input("Digite sua manifestação: ")
+
+        criarManifestacao(conn,categoria, assunto)
+        
+        print(f"✅ Nova manifestação criada com sucesso!")
 
     elif opcao == 4:
         print("Exibir quantidade de manifestações")
@@ -31,3 +43,5 @@ while opcao != 7:
         print("Código inválido.")
 
 print("Obrigado por utilizar nossa ouvidoria!")
+
+encerrarConexao(conn)
