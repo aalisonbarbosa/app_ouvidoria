@@ -29,3 +29,5 @@ while opcao != 7:
 
     else:
         print("Código inválido.")
+
+print("Obrigado por utilizar nossa ouvidoria!")
