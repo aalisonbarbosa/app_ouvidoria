@@ -8,7 +8,12 @@ while opcao != 7:
     print(
         "\n1. Listar manifestações\n2. Listar manifestações por tipo\n3. Criar manifestação\n4. Exibir quantidade de manifestações\n5. Visualizar manifestação pelo código\n6. Excluir manifestação por código\n7. Sair ")
 
-    opcao = int(input("Digite sua opção: "))
+    opcao = input("Digite sua opção: ")
+
+    if validarNumero(opcao):
+       opcao = int(opcao)
+    else: 
+        print("⚠️  Digite uma opção válida!")
 
     if opcao == 1:
         print("Listar manifestações")
@@ -22,7 +27,7 @@ while opcao != 7:
 
 
     elif opcao == 3:
-        
+
         categoria = escolherCategoria()
         assunto = input("Digite sua manifestação: ")
 
