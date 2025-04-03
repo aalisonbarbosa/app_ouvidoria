@@ -1,7 +1,7 @@
 from operacoesbd import *
 from metodos import *
 
-conn =  criarConexao("localhost","root","12345", "app_ouvidoria")
+conn =  criarConexao("localhost","root","", "")
 opcao = 0 
 
 print("\n🔰 Olá, Bem-vindo a ovidoria!\n")
@@ -57,7 +57,10 @@ while opcao != 7:
 
         tamanhoListaManifestacoes = exibirQuantidadeManifestacoes(conn)
 
-        print(f"\n🔎 No momento temos {tamanhoListaManifestacoes[0][0]} manifestações cadastradas!\n")
+        print(tamanhoListaManifestacoes)
+
+        print(f"\n🔎 No momento temos:\n{tamanhoListaManifestacoes[0]} Reclamações\n\n{tamanhoListaManifestacoes
+        [1]} Sugestões\n\n{tamanhoListaManifestacoes[2]} Elogios\n\nNo total: {tamanhoListaManifestacoes[3]} manifestações cadastradas!")
 
     elif opcao == 5:
 
