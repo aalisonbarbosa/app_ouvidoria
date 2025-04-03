@@ -4,15 +4,15 @@ from metodos import *
 conn =  criarConexao("localhost","root","12345", "app_ouvidoria")
 opcao = 0 
 
-print("🔰 Óla! Bem-vindo a ovidoria ")
+print("\n🔰 Olá, Bem-vindo a ovidoria!\n")
 
 while opcao != 7:
     print(f"{"="*30}\n            OPÇÕES            \n{"="*30}")
-    print(
-        "\n📋 1. Listar manifestações\n📝 2. Listar manifestações por tipo\n🆕 3. Criar manifestação\n👀 4. Exibir quantidade de manifestações\n🔎 5. Visualizar manifestação pelo código\n🗑️  6. Excluir manifestação por código\n🚪 7. Sair ")
+    print("\n📋 1) Listar manifestações\n📝 2) Listar manifestações por tipo\n🆕 3) Criar manifestação\n👀 4) Exibir quantidade de manifestações\n🔎 5) Visualizar manifestação pelo código\n🗑️  6) Excluir manifestação por código\n🚪 7) Sair ")
 
     opcao = input("\nDigite sua opção: ")
 
+    # verifica se a var opção é um número válido
     if validarNumero(opcao):
        opcao = int(opcao)
     else: 
@@ -20,47 +20,57 @@ while opcao != 7:
 
     if opcao == 1:
 
-        print(f"\n{"=" * 22} Manifestações {"=" * 22}\n")
+        print(f"\n{"=" * 23}\n     MANIFESTAÇÕES     \n{"=" * 23}\n")
 
-        listandoManifestacoes = listarManifestacoes(conn)
+        listaManifestacoes = listarManifestacoes(conn)
 
-        if len(listandoManifestacoes) == 0:
+        if len(listaManifestacoes) == 0:
             print("\n❌ Não há manifestações cadastradas!")
         else:
-            for manifestacao in listandoManifestacoes:
-                print("\n💠 Categoria:",manifestacao [1],"\nAssunto:",manifestacao [2],"\nCodigo:",manifestacao [0])
+            for manifestacao in listaManifestacoes:
+                print(f"▫️  Categoria: {manifestacao [1]}\nAssunto: {manifestacao [2]}\nCódigo: {manifestacao [0]}\n")
 
     elif opcao == 2:
         
+         # obtém categoria escolhida
         categoria = escolherCategoria()
         
         if len(categoria) > 0:
+            print(f"\n{"=" * 23}\n     MANIFESTAÇÕES     \n{"=" * 23}\n")
+
             listarManifestacoesCategoria(conn, categoria)
 
 
     elif opcao == 3:
 
+        # obtém categoria escolhida
         categoria = escolherCategoria()
-        assunto = input("\nDigite sua manifestação: ")
 
-        criarManifestacao(conn,categoria, assunto)
+        if len(categoria) > 0:
+            assunto = input("Digite sua manifestação: ")
+
+            criarManifestacao(conn,categoria, assunto)
         
-        print("\n✅ Nova manifestação criada com sucesso!")
+            print("\n✅ Nova manifestação criada com sucesso!\n")
 
     elif opcao == 4:
 
         tamanhoListaManifestacoes = exibirQuantidadeManifestacoes(conn)
 
-        print(f"\nNo momento temos {tamanhoListaManifestacoes[0][0]} manifestações cadastradas!")
+        print(f"\n🔎 No momento temos {tamanhoListaManifestacoes[0][0]} manifestações cadastradas!\n")
 
     elif opcao == 5:
-        pesquisarCodigo(conn)
+
+        pesquisarManifestacaoCodigo(conn)
 
     elif opcao == 6:
-        remover(conn)
-    else:
-        print("\nCódigo inválido.")
 
-print("🤝 Obrigado por utilizar nossa ouvidoria!")
+        removerManifestacao(conn)
+
+    elif opcao != 7:
+
+        print("\n⚠️  Digite um código válido!\n")
+
+print("\n🤝 Obrigado por utilizar nossa ouvidoria!\n")
 
 encerrarConexao(conn)
