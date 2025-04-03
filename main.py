@@ -57,8 +57,6 @@ while opcao != 7:
 
         tamanhoListaManifestacoes = exibirQuantidadeManifestacoes(conn)
 
-        print(tamanhoListaManifestacoes)
-
         print(f"\n🔎 No momento temos:\n{tamanhoListaManifestacoes[0]} Reclamações\n\n{tamanhoListaManifestacoes
         [1]} Sugestões\n\n{tamanhoListaManifestacoes[2]} Elogios\n\nNo total: {tamanhoListaManifestacoes[3]} manifestações cadastradas!")
 
