@@ -25,7 +25,7 @@ while opcao != 7:
         listaManifestacoes = listarManifestacoes(conn)
 
         if len(listaManifestacoes) == 0:
-            print("\n❌ Não há manifestações cadastradas!")
+            print("❌ Não há manifestações cadastradas!\n")
         else:
             for manifestacao in listaManifestacoes:
                 print(f"▫️  Categoria: {manifestacao [1]}\nAssunto: {manifestacao [2]}\nCódigo: {manifestacao [0]}\n")

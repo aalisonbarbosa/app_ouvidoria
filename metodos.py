@@ -52,7 +52,7 @@ def listarManifestacoesCategoria(conn, categoria):
     manifestacoes =  listarBancoDados(conn, sql, dados)
 
     if len(manifestacoes) == 0:
-        print("\n❌ Não há manifestações cadastradas!")
+        print("❌ Não há manifestações cadastradas!\n")
     else:
         for manifestacao in manifestacoes:
             print(F"▫️  Categoria: {manifestacao[1]}\nCódigo: {manifestacao[0]}\nAssunto: {manifestacao[2]}\n")
