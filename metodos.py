@@ -69,12 +69,19 @@ def criarManifestacao(conn, categoria, assunto):
 
 # função para exibir a quantidade de manifestações cadastradas no bd
 def exibirQuantidadeManifestacoes(conn):
-    sql = "select count(*) from manifestacoes"
+    sqlReclamacoes = "select count(*) from manifestacoes where categoria = 'reclamação'"
+    sqlSugestoes = "select count(*) from manifestacoes where categoria = 'sugestão'"
+    sqlElogios = "select count(*) from manifestacoes where categoria = 'elogio'"
 
-    # pega o número de manifestação cadastradas no bd
-    quantidadeManifestacoes = listarBancoDados(conn, sql)
 
-    return quantidadeManifestacoes
+    # pega o número de manifestação cadastradas no bd e pega sua posição na tupla
+    quantidadeReclamacoes = listarBancoDados(conn, sqlReclamacoes)[0][0]
+    quantidadeSugestoes = listarBancoDados(conn, sqlSugestoes)[0][0]
+    quantidadeElogios = listarBancoDados(conn, sqlElogios)[0][0]
+    # soma as manifestações
+    totalManifestacoes = quantidadeReclamacoes + quantidadeSugestoes + quantidadeElogios
+
+    return quantidadeReclamacoes,quantidadeSugestoes,quantidadeElogios,totalManifestacoes
 
 
 # função para pesquisar um manifestação pelo código
