@@ -55,7 +55,7 @@ def listarManifestacoesCategoria(conn, categoria):
         print("❌ Não há manifestações cadastradas!\n")
     else:
         for manifestacao in manifestacoes:
-            print(F"▫️  Categoria: {manifestacao[1]}\nCódigo: {manifestacao[0]}\nAssunto: {manifestacao[2]}\n")
+            print(F"▫️  Categoria: {manifestacao[1]}\nAssunto: {manifestacao[2]}\nCódigo: {manifestacao[0]}\n")
 
 
 # função para criar uma nova manifestação
