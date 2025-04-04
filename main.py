@@ -1,6 +1,6 @@
 from metodos import *
 
-conn =  criarConexao("localhost","root","casam10", "app_ouvidoria")
+conn =  criarConexao("localhost","root","", "app_ouvidoria")
 opcao = 0 
 
 print("\n🔰 Olá, Bem-vindo a ovidoria!\n")
