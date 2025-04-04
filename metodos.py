@@ -10,7 +10,7 @@ def validarNumero(num):
 
 # função que solicita a escolha de uma categoria e a retorna
 def escolherCategoria():
-        print(f"\n{"="*22}\n      CATEGORIAS      \n{"="*22}\n ")
+        print(f"\n{'='*22}\n      CATEGORIAS      \n{'='*22}\n ")
         print("1) Reclamação\n2) Sugestão\n3) Elogios\n")
 
         escolha = input("Escolha a categoria da manifestação: ")
@@ -32,7 +32,7 @@ def escolherCategoria():
                 return categoria
             else:
                 print("\n⚠️  Digite uma opção válida!\n")
-                return ""
+                return
 
 # função para listar todas as manifestações
 def listarManifestacoes(conn):
@@ -84,15 +84,15 @@ def exibirQuantidadeManifestacoes(conn):
     return quantidadeReclamacoes,quantidadeSugestoes,quantidadeElogios,totalManifestacoes
 
 
-# função para pesquisar um manifestação pelo código
+# função para pesquisar uma manifestação pelo código
 def pesquisarManifestacaoCodigo (conn):
     codigoPesquisa = input("Informe o codigo para pesquisa: ")
     
-      # verifica se o código digitado é um número válido
+      # verifica se o código digitado é um número válido.
     if not validarNumero(codigoPesquisa):
         print("\n⚠️  Digite um código válido!\n")
     else:
-        # se o código digitado for um número válido ele executa as linhas debaixo
+        # se o código digitado for um número válido ele executa as linhas debaixo.
         codigoPesquisa = int(codigoPesquisa)
         sql = "select * from manifestacoes where id = (%s)"
         dados = [codigoPesquisa]
@@ -104,15 +104,15 @@ def pesquisarManifestacaoCodigo (conn):
             print(f"\n🔎 Categoria: {manifestacao[0][1]}\nAssunto: {manifestacao[0][2]}\nCódigo: {manifestacao[0][0]}\n")
 
 
-# função para remover uma manifestação
+# função para remover uma manifestação.
 def removerManifestacao(conn):
     codigoRemocao = input("Digite o código da manifestção a ser removida: ")
     
-    # verifica se o código digitado é um número válido
+    # verifica se o código digitado é número válido
     if not validarNumero(codigoRemocao):
         print("\n⚠️  Digite um código válido!\n")
     else:
-        # se o código digitado for um número válido ele executa as linhas debaixo
+        # se o código digitado for um número válido ele executa as linhas a baixo
         codigoRemocao = int(codigoRemocao)
 
         sql = "delete from manifestacoes where id = %s"
@@ -120,7 +120,7 @@ def removerManifestacao(conn):
 
         linhasAfetadas = excluirBancoDados(conn,sql,dados)
         
-        # verifica se houve alguma alteração no bd
+        # verifica se houve alguma alteração no operaçoes bd
         if linhasAfetadas == 0:
             print("\n❌ Nenhuma manifestação removida!\n")
         else:

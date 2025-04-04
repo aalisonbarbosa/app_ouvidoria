@@ -1,18 +1,17 @@
-from operacoesbd import *
 from metodos import *
 
-conn =  criarConexao("localhost","root","", "")
+conn =  criarConexao("localhost","root","casam10", "app_ouvidoria")
 opcao = 0 
 
 print("\n🔰 Olá, Bem-vindo a ovidoria!\n")
 
 while opcao != 7:
-    print(f"{"="*30}\n            OPÇÕES            \n{"="*30}")
+    print(f"{'='*30}\n            OPÇÕES            \n{'='*30}")
     print("\n📋 1) Listar manifestações\n📝 2) Listar manifestações por tipo\n🆕 3) Criar manifestação\n👀 4) Exibir quantidade de manifestações\n🔎 5) Visualizar manifestação pelo código\n🗑️  6) Excluir manifestação por código\n🚪 7) Sair ")
 
     opcao = input("\nDigite sua opção: ")
 
-    # verifica se a var opção é um número válido
+    # verifica se a opção é um número válido
     if validarNumero(opcao):
        opcao = int(opcao)
     else: 
@@ -20,7 +19,7 @@ while opcao != 7:
 
     if opcao == 1:
 
-        print(f"\n{"=" * 23}\n     MANIFESTAÇÕES     \n{"=" * 23}\n")
+        print(f"\n{'=' * 23}\n     MANIFESTAÇÕES     \n{'=' * 23}\n")
 
         listaManifestacoes = listarManifestacoes(conn)
 
@@ -36,7 +35,7 @@ while opcao != 7:
         categoria = escolherCategoria()
         
         if len(categoria) > 0:
-            print(f"\n{"=" * 23}\n     MANIFESTAÇÕES     \n{"=" * 23}\n")
+            print(f"\n{'=' * 23}\n     MANIFESTAÇÕES     \n{'=' * 23}\n")
 
             listarManifestacoesCategoria(conn, categoria)
 
@@ -57,8 +56,7 @@ while opcao != 7:
 
         tamanhoListaManifestacoes = exibirQuantidadeManifestacoes(conn)
 
-        print(f"\n🔎 No momento temos:\n{tamanhoListaManifestacoes[0]} Reclamações\n\n{tamanhoListaManifestacoes
-        [1]} Sugestões\n\n{tamanhoListaManifestacoes[2]} Elogios\n\nNo total: {tamanhoListaManifestacoes[3]} manifestações cadastradas!")
+        print(f"\n🔎 No momento temos:\n{tamanhoListaManifestacoes[0]} Reclamações\n\n{tamanhoListaManifestacoes[1]} Sugestões\n\n{tamanhoListaManifestacoes[2]} Elogios\n\nNo total: {tamanhoListaManifestacoes[3]} manifestações cadastradas!")
 
     elif opcao == 5:
 
