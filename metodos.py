@@ -32,7 +32,7 @@ def escolherCategoria():
                 return categoria
             else:
                 print("\n⚠️  Digite uma opção válida!\n")
-                return
+                return ""
 
 # função para listar todas as manifestações
 def listarManifestacoes(conn):
